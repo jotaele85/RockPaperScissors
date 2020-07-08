@@ -20,7 +20,7 @@ public class Game {
         computerChoice = Choices.ROCK;
 
         //Third step: Obtain the result
-        //this.result = obtainResult();
+        this.result = obtainResult();
     }
 
     /**
