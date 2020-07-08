@@ -13,7 +13,56 @@
 	<br>
 
 </head>
+
 <body>
-<h1> hello to the game</h1>
+
+<div class="jumbotron">
+
+	<div class="container">
+		<h1>${welcome}</h1>
+		<br>
+	</div>
+
+	<div class="container">
+		<form action="<c:url value="play"/>">
+			<h2>
+				<button type="submit">${playButton}</button>
+			</h2>
+		</form> <br>
+
+		<c:if test="${!empty games}">
+			<table cellpadding="20" bordercolor="666633">
+				<!-- This table display all the games... -->
+				<tr>
+					<th><c:out value="${playerChoice}" /></th>
+					<th><c:out value="${computerChoice}" /></th>
+					<th><c:out value="${result}" /></th>
+				</tr>
+				<c:forEach var="game" items="${games}">
+					<tr>
+						<td><c:out value="${game.playerChoice}" /></td>
+						<td><c:out value="${game.computerChoice}" /></td>
+						<td><c:out value="${game.result}" /></td>
+					</tr>
+				</c:forEach>
+			</table> <br>
+		</c:if>
+
+		<form action="<c:url value="restart"/>">
+			<h2>
+				<button type="submit">${restartButton}</button>
+			</h2>
+		</form> <br>
+	</div>
+
+	<footer class="footer">
+		<div class="container">
+			<c:out value="${rounds}" />
+			<c:out value="${numGames}" />
+			<br> <a href="/stats">${goToStats}</a> <br>
+		</div>
+	</footer>
+</div>
+
 </body>
 </html>
