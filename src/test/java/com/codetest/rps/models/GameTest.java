@@ -22,4 +22,14 @@ public class GameTest {
         Assert.assertEquals(Results.WIN, game.getResult());
     }
 
+    @Test
+    public void playerShouldLoseTheGame(){
+        //Prepare the test
+        game = new Game();
+        game.setPlayerChoice(Choices.SCISSORS);
+
+        game.play();
+
+        Assert.assertEquals(Results.LOSE, game.getResult());
+    }
 }
