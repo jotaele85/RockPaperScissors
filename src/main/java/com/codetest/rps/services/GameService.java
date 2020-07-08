@@ -37,16 +37,16 @@ public class GameService {
      * @return the {@Link List<Game>} with the list of games.
      */
     public List<Game> playGame() {
-        Game game = new Game();
-        game.play();
+        Game game = createGame();
+        Results result = game.play();
         gameComponent.addGame(game);
 
         gamesAcc.incrementAndGet();
-        if (Results.WIN.equals(game.getResult()))
+        if (Results.WIN.equals(result))
             playerWinsAcc.incrementAndGet();
-        if (Results.LOSE.equals(game.getResult()))
+        if (Results.LOSE.equals(result))
             computerWinsAcc.incrementAndGet();
-        if (Results.DRAW.equals(game.getResult()))
+        if (Results.DRAW.equals(result))
             drawsAcc.incrementAndGet();
 
         return gameComponent.getGames();
@@ -88,4 +88,12 @@ public class GameService {
      * @return the {@Link int} with the result.
      */
     public int getDrawsAcc() { return drawsAcc.get(); }
+
+    /**
+     * Return new Game. This method is created to allow the test of the class.
+     * @return the {@Link Game} created.
+     */
+    protected Game createGame() {
+        return new Game();
+    }
 }

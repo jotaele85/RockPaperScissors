@@ -12,7 +12,7 @@ public class Game {
     /**
      * This method play a new round of a game and calculates the result.
      */
-    public void play() {
+    public Results play() {
         //First step: generation of random choice for the player
         playerChoice = Choices.getRandomChoice();
 
@@ -20,7 +20,8 @@ public class Game {
         computerChoice = Choices.ROCK;
 
         //Third step: Obtain the result
-        this.result = obtainResult();
+        result = obtainResult();
+        return result;
     }
 
     /**
