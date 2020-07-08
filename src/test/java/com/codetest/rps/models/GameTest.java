@@ -12,24 +12,43 @@ public class GameTest {
     Game game;
 
     @Test
-    public void playerShouldWinTheGame(){
+    public void playerShouldWinTheGame() {
         //Prepare the test
         game = new Game();
         game.setPlayerChoice(Choices.PAPER);
 
-        game.play();
+        Results result = game.obtainResult();
 
-        Assert.assertEquals(Results.WIN, game.getResult());
+        Assert.assertEquals(Results.WIN, result);
     }
 
     @Test
-    public void playerShouldLoseTheGame(){
+    public void playerShouldLoseTheGame() {
         //Prepare the test
         game = new Game();
         game.setPlayerChoice(Choices.SCISSORS);
 
+        Results result = game.obtainResult();
+
+        Assert.assertEquals(Results.LOSE, result);
+    }
+
+    @Test
+    public void playerShouldTieTheGame() {
+        //Prepare the test
+        game = new Game();
+        game.setPlayerChoice(Choices.ROCK);
+
+        Results result = game.obtainResult();
+
+        Assert.assertEquals(Results.DRAW, result);
+    }
+
+    @Test
+    public void computerAlwaysChooseRock() {
+        game = new Game();
         game.play();
 
-        Assert.assertEquals(Results.LOSE, game.getResult());
+        Assert.assertEquals(Choices.ROCK, game.getComputerChoice());
     }
 }

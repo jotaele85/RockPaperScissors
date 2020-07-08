@@ -27,12 +27,13 @@ public class Game {
      * Return the Result of a game.
      * @return {@Link Result} with the result.
      */
-    private Results obtainResult() {
+    public Results obtainResult() {
         if (Choices.PAPER.equals(playerChoice))
             return Results.WIN;
         else if (Choices.SCISSORS.equals(playerChoice))
             return Results.LOSE;
-        return Results.DRAW;
+        else
+            return Results.DRAW;
     }
 
     public Choices getPlayerChoice() {
